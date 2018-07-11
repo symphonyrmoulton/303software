@@ -11,8 +11,6 @@ const goodResponse2 = [
       "id": "1",
       "author": "Ryan",
       "content": "awesome",
-      "createdAt": "2018-07-11T13:46:25.000Z",
-      "updatedAt": "2018-07-11T13:46:25.000Z"
   }
 ];
 
@@ -21,8 +19,6 @@ const goodResponse1 = {
   "id": "1",
   "author": "Ryan",
   "content": "awesome",
-  "createdAt": "2018-07-11T13:46:25.000Z",
-  "updatedAt": "2018-07-11T13:46:25.000Z"
 };
 
 /**
@@ -43,23 +39,9 @@ describe('POST /request', () => {
         .send({})
         .expect(200)
         .expect((res) => {
-          expect(JSON.stringify(res.body)).toBe(JSON.stringify(goodResponse1))
-        })
-        .end((err, res) => {
-          if (err) {
-            return done(err)
-          }
-          done()
-        })
-    })
-
-    it('should return all', (done) => {
-      request(app.listen())
-        .post('/getAll')
-        .send({})
-        .expect(200)
-        .expect((res) => {
-          expect(JSON.stringify(res.body)).toBe(JSON.stringify(goodResponse2))
+          expect(JSON.stringify(res.body.title)).toBe(JSON.stringify(goodResponse1.title))
+          expect(JSON.stringify(res.body.content)).toBe(JSON.stringify(goodResponse1.content))
+          expect(JSON.stringify(res.body.author)).toBe(JSON.stringify(goodResponse1.author))
         })
         .end((err, res) => {
           if (err) {

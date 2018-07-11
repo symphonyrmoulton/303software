@@ -30,13 +30,17 @@ module.exports.getAll = function(req, res) {
 
 module.exports.update = function(req, res) {
     var request = req.body;
+    if (typeof request.id === 'undefined') {
+        res.status(400).send("id is required");
+        return;
+    }
     Book.update(
         { 
             title: request.title,
             author: request.author,
             content: request.content,
         },
-        { where: { _id: request.id } }
+        { where: { id: request.id } }
       )
         .then(result => function () {
             res.status(200).send(result)
@@ -53,6 +57,10 @@ module.exports.update = function(req, res) {
 
 module.exports.delete = function(req, res) {
     var request = req.body;
+    if (typeof request.id === 'undefined') {
+        res.status(400).send("id is required");
+        return;
+    }
     Book.delete(request.id).then(deletedBOok => {
         res.status(200).send(deletedBOok);
         return;

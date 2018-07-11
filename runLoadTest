@@ -1,1 +1,0 @@
-loadtest -c 10 --rps 50 http://localhost:3000/request -t 60 -p runLoadTestRequest.json -T application/json
