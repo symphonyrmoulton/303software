@@ -1,0 +1,26 @@
+{
+  "name": "303Software",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "index.js",
+  "scripts": {
+    "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha tests/*.test.js",
+    "test-watch": "nodemon --exec 'npm test'",
+    "start": "nodemon server.js"
+  },
+  "author": "Ryan Moulton",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mysql2": "^1.5.3",
+    "sequelize": "^4.38.0"
+  },
+  "devDependencies": {
+    "expect": "^1.20.2",
+    "loadtest": "^3.0.3",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.17.5",
+    "supertest": "^3.0.0"
+  }
+}
